@@ -19,8 +19,8 @@ public class DBConnector {
                 int id = myRes.getInt("Id");
                 String gender = myRes.getString("Gender");
                 LocalDate birth = null;
-                if (myRes.getDate("Birth date") != null){
-                    birth = myRes.getDate("Birth date").toLocalDate();
+                if (myRes.getDate("Birth_date") != null){
+                    birth = myRes.getDate("Birth_date").toLocalDate();
                 }
                 String photo = myRes.getString("Photo");
                 String mark = myRes.getString("Mark");
@@ -67,13 +67,13 @@ public class DBConnector {
         try {
             Statement myStmt = myConn.createStatement();
             String sql = "Update students SET "+"" +
-                    "Name =" + selectedStudent.getName() +
-                    ", Gender =" + selectedStudent.getGender() +
-                    ", Birth =" + selectedStudent.getBday() +
-                    ", Photo =" + selectedStudent.getPhoto() +
-                    ", Mark =" + selectedStudent.getMark() +
-                    ", Comment =" + selectedStudent.getComments() +
-                    "Where Id =" + selectedStudent.getId();
+                    "Name ='" + selectedStudent.getName() +
+                    "', Gender ='" + selectedStudent.getGender() +
+                    "', Birth_date='" + selectedStudent.getBday() +
+                    "', Photo = '" + selectedStudent.getPhoto() +
+                    "', Mark ='" + selectedStudent.getMark() +
+                    "', Comment ='" + selectedStudent.getComments() +
+                    "' Where students.Id = " + selectedStudent.getId();
             myStmt.execute(sql);
         } catch (Exception e){
             e.printStackTrace();

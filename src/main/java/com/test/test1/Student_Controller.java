@@ -7,11 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.time.LocalDate;
 
+import java.io.Console;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -21,7 +24,7 @@ public class Student_Controller implements Initializable {
     TextField namebox;
 
     @FXML
-    ComboBox genderbox;
+    ComboBox<String> genderbox;
 
     @FXML
     DatePicker bdaybox;
@@ -62,9 +65,6 @@ public class Student_Controller implements Initializable {
         }
     }
 
-    public void fetchStudent(){
-        List<Student> test = manager.loadStudents();
-    }
 
     public void onEdit(){
         savebtn.disableProperty().set(false);
@@ -82,11 +82,12 @@ public class Student_Controller implements Initializable {
 
     public void onSave(){
         int id = selectedStudent.getId();
-        selectedStudent.setName(namebox.toString());
-        selectedStudent.setGender(genderbox.toString());
-        selectedStudent.setMark(markbox.toString());
-        selectedStudent.setComments(commentsbox.toString());
-        selectedStudent.setPhoto(lblurl.toString());
+        selectedStudent.setName(namebox.getText());
+        selectedStudent.setGender(genderbox.getSelectionModel().getSelectedItem());
+        selectedStudent.setMark(markbox.getText());
+        selectedStudent.setComments(commentsbox.getText());
+        selectedStudent.setPhoto(lblurl.getText());
+        selectedStudent.setBday(bdaybox.getValue());
         manager.updateStudent(selectedStudent);
         onCancel();
     }
@@ -98,6 +99,11 @@ public class Student_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedStudent = null;
         manager = new DBConnector();
+        List<String> gvalues = new ArrayList<String>();
+        gvalues.add("Male");
+        gvalues.add("Female");
+        ObservableList<String> gender = FXCollections.observableArrayList(gvalues);
+        genderbox.setItems(gender);
         fetchStudents();
         studentsbox.getSelectionModel().selectedItemProperty().addListener(e -> displayStudentDetails(studentsbox.getSelectionModel().getSelectedItem()));
     }
