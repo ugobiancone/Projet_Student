@@ -55,6 +55,8 @@ public class Student_Controller implements Initializable {
     @FXML
     Label lblurl;
 
+
+
     public void fetchStudents() {
         List<Student> listStudents = manager.loadStudents();
         if (listStudents != null) {
@@ -76,12 +78,23 @@ public class Student_Controller implements Initializable {
     }
 
     public void chooseImage(){
+        Image image;
+        InputStream im = null;
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(lblurl.getScene().getWindow());
         if (selectedFile != null){
             lblurl.setText(selectedFile.getAbsolutePath());
             selectedStudent.setPhoto(selectedFile.getAbsolutePath());
+            try {
+                im = new FileInputStream(selectedFile.getAbsolutePath());
+                image = new Image(im);
+                photobox.setImage(image);
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
 
     public void onSave(){
