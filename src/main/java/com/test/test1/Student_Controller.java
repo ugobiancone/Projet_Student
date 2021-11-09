@@ -125,8 +125,9 @@ public class Student_Controller implements Initializable {
     }
 
     public void onDelete(){
+        manager = new DBConnector();
         deletebtn.disableProperty().set(true);
-        delete(selectedStudent);
+        manager.deleteStudent(selectedStudent);
     }
 
     DBConnector manager;
