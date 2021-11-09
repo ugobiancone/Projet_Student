@@ -8,6 +8,7 @@ module com.test.test1 {
     requires java.sql;
     requires java.security.jgss;
     requires mysql.connector.java;
+    requires java.desktop;
 
     opens com.test.test1 to javafx.fxml;
     exports com.test.test1;

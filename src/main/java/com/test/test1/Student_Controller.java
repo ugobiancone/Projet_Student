@@ -7,12 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+
+import java.io.*;
 import java.time.LocalDate;
 
-import java.io.Console;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +76,12 @@ public class Student_Controller implements Initializable {
     }
 
     public void chooseImage(){
-
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(lblurl.getScene().getWindow());
+        if (selectedFile != null){
+            lblurl.setText(selectedFile.getAbsolutePath());
+            selectedStudent.setPhoto(selectedFile.getAbsolutePath());
+        }
     }
 
     public void onSave(){
