@@ -81,6 +81,7 @@ public class Student_Controller implements Initializable {
         if (selectedFile != null){
             lblurl.setText(selectedFile.getAbsolutePath());
             selectedStudent.setPhoto(selectedFile.getAbsolutePath());
+            //test test
         }
     }
 
