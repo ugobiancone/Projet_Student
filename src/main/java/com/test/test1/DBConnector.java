@@ -91,4 +91,16 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
+
+    public void deleteStudent(Student selectedStudent){
+        Connection myConn = this.Connector();
+        try{
+            Statement myStmt = myConn.createStatement();
+            String sql;
+            sql = "DELETE FROM `students` WHERE student.Id =" + selectedStudent.getId();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
