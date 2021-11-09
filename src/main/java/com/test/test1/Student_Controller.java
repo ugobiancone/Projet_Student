@@ -143,10 +143,19 @@ public class Student_Controller implements Initializable {
                 image = new Image(is);
                 photobox.setImage(image);
             } else {
-                is = new FileInputStream("/home/ugo/Pictures/studentAno.jpg");
-                image = new Image(is);
-                photobox.setImage(image);
-                lblurl.setText("/home/ugo/Pictures/studentAno.jpg");
+                try {
+                    is = new FileInputStream("/home/ugo/Pictures/studentAno.jpg");
+                    image = new Image(is);
+                    photobox.setImage(image);
+                    lblurl.setText("/home/ugo/Pictures/studentAno.jpg");
+                }
+                catch (Exception e)
+                {
+                    is = new FileInputStream("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Projet_Student\\images\\anonyme.png");
+                    image = new Image(is);
+                    photobox.setImage(image);
+                    lblurl.setText("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Projet_Student\\images\\anonyme.png");
+                }
             }
             markbox.setText(String.valueOf(selectedStudent.getMark()));
             commentsbox.setText(selectedStudent.getComments());
