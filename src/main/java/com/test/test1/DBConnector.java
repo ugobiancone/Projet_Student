@@ -78,13 +78,13 @@ public class DBConnector {
                         "' Where students.Id = " + selectedStudent.getId();
             }
             else{
-                sql = "INSERT INTO `students`" + "" +
-                        "Name ='" + selectedStudent.getName() +
-                        "', Gender ='" + selectedStudent.getGender() +
-                        "', Birth_date='" + selectedStudent.getBday() +
-                        "', Photo = '" + selectedStudent.getPhoto() +
-                        "', Mark ='" + selectedStudent.getMark() +
-                        "', Comment ='" + selectedStudent.getComments() +"'";
+                sql = "INSERT INTO students(Name, Gender,Birth_date, Photo, Mark, Comment) VALUES( '" +
+                        selectedStudent.getName() +
+                        "', '" + selectedStudent.getGender() +
+                        "', '" + selectedStudent.getBday() +
+                        "',  '" + selectedStudent.getPhoto() +
+                        "', '" + selectedStudent.getMark() +
+                        "', '" + selectedStudent.getComments() +"');";
             }
             myStmt.execute(sql);
         } catch (Exception e){
