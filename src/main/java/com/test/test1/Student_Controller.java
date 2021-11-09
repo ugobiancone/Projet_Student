@@ -79,15 +79,15 @@ public class Student_Controller implements Initializable {
 
     public void chooseImage(){
         Image image;
-        InputStream im = null;
+        InputStream is = null;
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(lblurl.getScene().getWindow());
         if (selectedFile != null){
             lblurl.setText(selectedFile.getAbsolutePath());
             selectedStudent.setPhoto(selectedFile.getAbsolutePath());
             try {
-                im = new FileInputStream(selectedFile.getAbsolutePath());
-                image = new Image(im);
+                is = new FileInputStream(selectedFile.getAbsolutePath());
+                image = new Image(is);
                 photobox.setImage(image);
             }
             catch(Exception e){
