@@ -109,6 +109,15 @@ public class Student_Controller implements Initializable {
         onCancel();
     }
 
+    public void onNew(){
+        Student s = new Student();
+        displayStudentDetails(s);
+        savebtn.disableProperty().set(false);
+        cancelbtn.disableProperty().set(false);
+        newbtn.disableProperty().set(true);
+        editbtn.disableProperty().set(true);
+    }
+
     DBConnector manager;
     Student selectedStudent;
 

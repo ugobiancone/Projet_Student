@@ -66,14 +66,26 @@ public class DBConnector {
         Connection myConn = this.Connector();
         try {
             Statement myStmt = myConn.createStatement();
-            String sql = "Update students SET "+"" +
-                    "Name ='" + selectedStudent.getName() +
-                    "', Gender ='" + selectedStudent.getGender() +
-                    "', Birth_date='" + selectedStudent.getBday() +
-                    "', Photo = '" + selectedStudent.getPhoto() +
-                    "', Mark ='" + selectedStudent.getMark() +
-                    "', Comment ='" + selectedStudent.getComments() +
-                    "' Where students.Id = " + selectedStudent.getId();
+            String sql;
+            if(selectedStudent.getId() != 0) {
+                sql = "Update students SET " + "" +
+                        "Name ='" + selectedStudent.getName() +
+                        "', Gender ='" + selectedStudent.getGender() +
+                        "', Birth_date='" + selectedStudent.getBday() +
+                        "', Photo = '" + selectedStudent.getPhoto() +
+                        "', Mark ='" + selectedStudent.getMark() +
+                        "', Comment ='" + selectedStudent.getComments() +
+                        "' Where students.Id = " + selectedStudent.getId();
+            }
+            else{
+                sql = "INSERT INTO `students`" + "" +
+                        "Name ='" + selectedStudent.getName() +
+                        "', Gender ='" + selectedStudent.getGender() +
+                        "', Birth_date='" + selectedStudent.getBday() +
+                        "', Photo = '" + selectedStudent.getPhoto() +
+                        "', Mark ='" + selectedStudent.getMark() +
+                        "', Comment ='" + selectedStudent.getComments() +"'";
+            }
             myStmt.execute(sql);
         } catch (Exception e){
             e.printStackTrace();
