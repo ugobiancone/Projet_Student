@@ -55,6 +55,9 @@ public class Student_Controller implements Initializable {
     @FXML
     Label lblurl;
 
+    @FXML
+    Button deletebtn;
+
 
 
     public void fetchStudents() {
@@ -118,6 +121,11 @@ public class Student_Controller implements Initializable {
         editbtn.disableProperty().set(true);
     }
 
+    public void onDelete(){
+        deletebtn.disableProperty().set(true);
+        delete(selectedStudent);
+    }
+
     DBConnector manager;
     Student selectedStudent;
 
@@ -136,6 +144,7 @@ public class Student_Controller implements Initializable {
 
     private void displayStudentDetails(Student selectedStudent) {
         this.selectedStudent = selectedStudent;
+        deletebtn.disableProperty().set(false);
 
         try {
             namebox.setText(selectedStudent.getName());
