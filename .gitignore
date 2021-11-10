@@ -1,2 +1,7 @@
 # Project exclude paths
 /target/
+test1.iml
+*.iml
+*.iml
+*.xml
+*.xml

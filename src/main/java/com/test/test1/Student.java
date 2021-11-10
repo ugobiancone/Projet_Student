@@ -11,6 +11,11 @@ public class Student {
     public String mark;
     public String comments;
 
+    public Student()
+    {
+        this.bday = LocalDate.now();
+    }
+
     public Student(int id,String name, String gender, LocalDate bday, String photo, String mark, String comments) {
         this.Id = id;
         this.name = name;
