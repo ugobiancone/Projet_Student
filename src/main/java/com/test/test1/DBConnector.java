@@ -97,7 +97,8 @@ public class DBConnector {
         try{
             Statement myStmt = myConn.createStatement();
             String sql;
-            sql = "DELETE FROM `students` WHERE student.Id =" + selectedStudent.getId();
+            sql = "DELETE FROM `students` WHERE students.Id =" + selectedStudent.getId();
+            myStmt.execute(sql);
 
         }catch(Exception e){
             e.printStackTrace();

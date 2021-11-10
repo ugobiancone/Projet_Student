@@ -73,12 +73,17 @@ public class Student_Controller implements Initializable {
     public void onEdit(){
         savebtn.disableProperty().set(false);
         cancelbtn.disableProperty().set(false);
+        editbtn.disableProperty().set(true);
     }
 
     public void onCancel(){
         savebtn.disableProperty().set(true);
         cancelbtn.disableProperty().set(true);
         studentsbox.disableProperty().set(false);
+        editbtn.disableProperty().set(false);
+        newbtn.disableProperty().set(false);
+        editbtn.disableProperty().set(true);
+        fetchStudents();
     }
 
     public void chooseImage(){
@@ -127,7 +132,9 @@ public class Student_Controller implements Initializable {
     public void onDelete(){
         manager = new DBConnector();
         deletebtn.disableProperty().set(true);
+        newbtn.disableProperty().set(false);
         manager.deleteStudent(selectedStudent);
+        fetchStudents();
     }
 
     DBConnector manager;
@@ -149,6 +156,7 @@ public class Student_Controller implements Initializable {
     private void displayStudentDetails(Student selectedStudent) {
         this.selectedStudent = selectedStudent;
         deletebtn.disableProperty().set(false);
+        editbtn.disableProperty().set(false);
 
         try {
             namebox.setText(selectedStudent.getName());

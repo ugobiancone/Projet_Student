@@ -35,6 +35,6 @@
       <Button fx:id="cancelbtn" disable="true" layoutX="583.0" layoutY="443.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
       <Button fx:id="newbtn" layoutX="37.0" layoutY="443.0" mnemonicParsing="false" onAction="#onNew" text="New Student" />
       <Label fx:id="lblurl" layoutX="660.0" layoutY="313.0" text="url" textFill="TRANSPARENT" />
-      <Button fx:id="deletebtn" disable="true" layoutX="164.0" layoutY="443.0" mnemonicParsing="false" onAction="#onNew" text="Delete" />
+      <Button fx:id="deletebtn" disable="true" layoutX="164.0" layoutY="443.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
    </children>
 </AnchorPane>
