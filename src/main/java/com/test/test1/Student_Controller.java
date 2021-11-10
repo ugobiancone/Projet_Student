@@ -78,6 +78,7 @@ public class Student_Controller implements Initializable {
     public void onCancel(){
         savebtn.disableProperty().set(true);
         cancelbtn.disableProperty().set(true);
+        studentsbox.disableProperty().set(false);
     }
 
     public void chooseImage(){
@@ -108,6 +109,7 @@ public class Student_Controller implements Initializable {
         selectedStudent.setComments(commentsbox.getText());
         selectedStudent.setPhoto(lblurl.getText());
         selectedStudent.setBday(bdaybox.getValue());
+        studentsbox.disableProperty().set(false);
         manager.updateStudent(selectedStudent);
         onCancel();
     }
@@ -119,6 +121,7 @@ public class Student_Controller implements Initializable {
         cancelbtn.disableProperty().set(false);
         newbtn.disableProperty().set(true);
         editbtn.disableProperty().set(true);
+        studentsbox.disableProperty().set(true);
     }
 
     public void onDelete(){
@@ -169,10 +172,10 @@ public class Student_Controller implements Initializable {
                 }
                 catch (Exception e)
                 {
-                    is = new FileInputStream("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Projet_Student\\images\\anonyme.png");
+                    is = new FileInputStream("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Project\\Projet_Student\\images\\anonyme.png");
                     image = new Image(is);
                     photobox.setImage(image);
-                    lblurl.setText("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Projet_Student\\images\\anonyme.png");
+                    lblurl.setText("C:\\Users\\login\\OneDrive - De Vinci\\A4\\[JV] Java JEE Secure Coding\\Projet\\Project\\Projet_Student\\images\\anonyme.png");
                 }
             }
             markbox.setText(String.valueOf(selectedStudent.getMark()));
