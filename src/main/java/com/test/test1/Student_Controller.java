@@ -1,5 +1,6 @@
 package com.test.test1;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,9 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-import java.io.*;
-import java.time.LocalDate;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +92,12 @@ public class Student_Controller implements Initializable {
         Image image;
         InputStream is = null;
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Student Photo");
+        fileChooser.getExtensionFilters().addAll(//,
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"\\images"));
         File selectedFile = fileChooser.showOpenDialog(lblurl.getScene().getWindow());
         if (selectedFile != null){
             lblurl.setText(selectedFile.getAbsolutePath());
@@ -114,6 +122,7 @@ public class Student_Controller implements Initializable {
         selectedStudent.setComments(commentsbox.getText());
         String path = lblurl.getText();
         String Nom_fichier = path.substring(path.lastIndexOf("\\"));
+        Nom_fichier = Nom_fichier.substring(1);
         selectedStudent.setPhoto(Nom_fichier);  //chemin.substring(chemin.lastIndexOf("/"));
         selectedStudent.setBday(bdaybox.getValue());
         studentsbox.disableProperty().set(false);
@@ -172,8 +181,7 @@ public class Student_Controller implements Initializable {
             if(selectedStudent.getPhoto() != null) {
                 String path = System.getProperty("user.dir") ;
                 is = new FileInputStream(path + "\\images\\" + selectedStudent.getPhoto());
-                lblurl.setText(selectedStudent.getPhoto());
-                image = new Image(is);
+                lblurl.setText(path + "\\images\\" + selectedStudent.getPhoto());                image = new Image(is);
                 photobox.setImage(image);
             } else {
                 try {
@@ -181,7 +189,7 @@ public class Student_Controller implements Initializable {
                     is = new FileInputStream(path + "\\images\\studentAno.png");
                     image = new Image(is);
                     photobox.setImage(image);
-                    lblurl.setText("studentAno.jpg");
+                    lblurl.setText(path + "\\images\\studentAno.png");
                 }
                 catch (Exception e)
                 {

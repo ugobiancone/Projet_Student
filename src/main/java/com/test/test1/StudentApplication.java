@@ -12,7 +12,7 @@ public class StudentApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StudentApplication.class.getResource("strudent_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Student Summary");
         stage.setScene(scene);
         stage.show();
     }

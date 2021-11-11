@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="test1" options="--add-exports java.security.jgss/org=com.test.test1" />
+      <module name="test1" options="" />
     </option>
   </component>
 </project>
