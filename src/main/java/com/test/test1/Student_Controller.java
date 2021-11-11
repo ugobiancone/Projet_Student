@@ -112,7 +112,9 @@ public class Student_Controller implements Initializable {
         selectedStudent.setGender(genderbox.getSelectionModel().getSelectedItem());
         selectedStudent.setMark(markbox.getText());
         selectedStudent.setComments(commentsbox.getText());
-        selectedStudent.setPhoto(lblurl.getText());
+        String path = lblurl.getText();
+        String Nom_fichier = path.substring(path.lastIndexOf("\\"));
+        selectedStudent.setPhoto(Nom_fichier);  //chemin.substring(chemin.lastIndexOf("/"));
         selectedStudent.setBday(bdaybox.getValue());
         studentsbox.disableProperty().set(false);
         manager.updateStudent(selectedStudent);
